@@ -112,4 +112,45 @@
              }
          }
      }
+  if country in seasons:
+         # Prompt the user to choose the type of season for Australia
+         if country == 'Australia':
+             season_type = input("Choose the type of season (1: Meteorological Seasons, 2: Noongar Seasons): ")
+             if season_type == '1':
+                 season_dict = seasons[country]['Meteorological Seasons']
+             elif season_type == '2':
+                 season_dict = seasons[country]['Noongar Seasons']
+             else:
+                 return 'Unknown'
+         else:
+             season_dict = seasons[country]['Meteorological Seasons']
+         
+         if month in season_dict:
+             return season_dict[month] # Return the corresponding season
+         else:
+             return 'Unknown' # Return 'Unknown' if the month is not found
+     else:
+         return 'Unknown' # Return 'Unknown' if the country is not found
  
+ # Main function to handle user interactions
+ def main():
+     # Prompt the user to enter the country and month
+     country = input("Enter the country: ")
+     month = input("Enter the month: ")
+     
+     # Call the find_season function and get the result
+     season = find_season(country, month)
+     
+     # Display the result in text format
+     print(f"The season in {country} during {month} is {season}")
+    # Display the result using the graphics symbols (assuming the images are stored in the 'ISEimages' folder)
+     if season == 'Summer':
+         print("Insert summer image here") # Insert the appropriate image for summer
+     elif season == 'Autumn':
+         print("Insert autumn image here") # Insert the appropriate image for autumn
+     elif season == 'Winter':
+         print("Insert winter image here") # Insert the appropriate image for winter
+     elif season == 'Spring':
+         print("Insert spring image here") # Insert the appropriate image for spring
+     else:
+         print("Unknown season")
